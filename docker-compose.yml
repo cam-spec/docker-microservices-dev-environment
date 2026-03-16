@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  service-a:
+    build:
+      context: ./services/service-a
+    container_name: service-a
+    environment:
+      - PORT=${SERVICE_A_PORT:-3001}
+    ports:
+      - "${SERVICE_A_PORT:-3001}:${SERVICE_A_PORT:-3001}"
+
+  service-b:
+    build:
+      context: ./services/service-b
+    container_name: service-b
+    environment:
+      - PORT=${SERVICE_B_PORT:-3002}
+    ports:
+      - "${SERVICE_B_PORT:-3002}:${SERVICE_B_PORT:-3002}"

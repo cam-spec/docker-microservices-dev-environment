@@ -1,0 +1,12 @@
+{
+  "name": "service-b",
+  "version": "1.0.0",
+  "description": "Service B for docker microservices dev environment",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
