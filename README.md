@@ -1,11 +1,20 @@
-## Docker Compose Microservices Dev Template
+## Docker Compose Microservices Dev Environment
 
-This is a **minimal, generic, local development template** for running multiple Node.js services with Docker Compose.
+This repository is a **reusable Docker Compose microservices development environment** for running multiple Node.js services locally.
 
 It is designed to be:
 - **Simple**: only what you need to run two services locally.
 - **Generic**: no cloud providers, databases, or extra tooling.
 - **Reusable**: easy to copy and adapt to your own services.
+
+### Services
+
+- **service-a**: Node.js service exposed on port **3001**
+- **service-b**: Node.js service exposed on port **3002**
+
+Both services are small Express applications that expose:
+- **`GET /`**: basic JSON response with service name and status.
+- **`GET /health`**: simple health check.
 
 ### Project structure
 
@@ -23,16 +32,6 @@ It is designed to be:
       ├─ package.json
       └─ index.js
 ```
-
-### Services
-
-Both sample services are very small Express applications that expose:
-- **`GET /`**: basic JSON response with service name and status.
-- **`GET /health`**: simple health check.
-
-Default ports (can be changed via `.env`):
-- `service-a`: `3001`
-- `service-b`: `3002`
 
 ### Prerequisites
 
@@ -84,6 +83,17 @@ Default ports (can be changed via `.env`):
    docker compose down
    ```
 
+### Endpoint examples
+
+Once the environment is running, you can test the services with a browser or `curl`:
+
+- `service-a`:
+  - `http://localhost:3001`
+  - `http://localhost:3001/health`
+- `service-b`:
+  - `http://localhost:3002`
+  - `http://localhost:3002/health`
+
 ### Customizing for your own services
 
 - **Rename services** in `docker-compose.yml` and under `services/` to match your domain (for example, `api-gateway`, `users-service`).
@@ -93,6 +103,13 @@ Default ports (can be changed via `.env`):
 - **Adjust ports and environment variables** by updating:
   - `.env.example` and your local `.env`.
   - The `ports` and `environment` sections for each service in `docker-compose.yml`.
+
+### Use cases
+
+This template is useful for:
+- **Local microservice development**: run multiple services together on your machine.
+- **Docker Compose starter environments**: use this as a starting point for your own projects.
+- **Prototyping multi-service applications**: quickly spin up simple services to explore ideas.
 
 ### Notes
 
